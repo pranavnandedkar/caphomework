@@ -58,6 +58,7 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
 	public Login() {
 		ctx = new ClassPathXmlApplicationContext("spring.xml");
 		session = (CustomSession)ctx.getBean("customSession");
