@@ -62,6 +62,8 @@ public class Next extends JFrame {
 	private JTextField txtIsbn;
 	private JTextField txtPrice;
 	private JTextField txtEdition;
+	private JPanel panel_5;
+	private JTextField textCheckin;
 	   /**
 	 * Launch the application.
 	 */
@@ -121,6 +123,12 @@ public class Next extends JFrame {
 		dao.checkOut(id);
 		
 	}
+	
+	public void checkIn(String id){
+		dao.checkIn(id);
+		
+	}
+	
 	
 	/**
 	 * Create the frame.
@@ -267,7 +275,6 @@ public class Next extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			String id = textCheckOut.getText();
 			checkout(id);
-				
 		  }
 		});
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -392,6 +399,44 @@ public class Next extends JFrame {
 					.addContainerGap(65, Short.MAX_VALUE))
 		);
 		panel_4.setLayout(gl_panel_4);
+		
+		panel_5 = new JPanel();
+		tabbedPane_AvlBooks.addTab("check in", null, panel_5, null);
+		
+		textCheckin = new JTextField();
+		textCheckin.setColumns(10);
+		
+		JButton btnCheckin = new JButton("Checkin");
+		btnCheckin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String id = textCheckin.getText();
+				checkIn(id);
+			
+			}
+		});
+		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
+		gl_panel_5.setHorizontalGroup(
+			gl_panel_5.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_5.createSequentialGroup()
+					.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_5.createSequentialGroup()
+							.addGap(304)
+							.addComponent(textCheckin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_5.createSequentialGroup()
+							.addGap(280)
+							.addComponent(btnCheckin, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(334, Short.MAX_VALUE))
+		);
+		gl_panel_5.setVerticalGroup(
+			gl_panel_5.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_5.createSequentialGroup()
+					.addGap(35)
+					.addComponent(textCheckin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(92)
+					.addComponent(btnCheckin, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(196, Short.MAX_VALUE))
+		);
+		panel_5.setLayout(gl_panel_5);
 		
 		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addTab("History", null, tabbedPane_2, null);

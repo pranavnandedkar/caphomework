@@ -61,7 +61,22 @@ public class JdbcDao {
 		return borrower;
 	}
 	
-	
+	public void checkIn(String id){
+		Connection con;
+		try {
+			con = dataSource.getConnection();
+			PreparedStatement ps = con.prepareStatement("Update books set available = 'YES' where idbooks = ?");
+			ps.setString(1, id);
+			ps.executeUpdate();
+			ps.close();
+			con.close();
+			ps.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+	}
 	public void checkOut(String id){
 		Connection con;
 		try {
